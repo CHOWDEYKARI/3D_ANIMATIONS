@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Face Swapping Example</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            background-color: #f4f4f4;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        #faceImage {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            border: 5px solid #333;
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img id="faceImage" src="./assests/1.jpeg" alt="Human Face">
+        <div>
+            <button onclick="changeFace('man')">Change to Man's Face</button>
+            <button onclick="changeFace('woman')">Change to Woman's Face</button>
+        </div>
+    </div>
+
+    <script>
+        function changeFace(gender) {
+            const faceImage = document.getElementById("faceImage");
+
+            if (gender === 'man') {
+                faceImage.src = './assests/m1.jpeg';  // Replace with your image path for a man's face
+            } else if (gender === 'woman') {
+                faceImage.src = './assests/w1.jpeg';  // Replace with your image path for a woman's face
+            }
+        }
+    </script>
+</body>
+</html>

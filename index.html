@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Animation with Web Speech API</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+
+        .scene {
+            width: 200px;
+            height: 200px;
+            perspective: 600px;
+        }
+
+        .cube {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transform: rotateX(-30deg) rotateY(-45deg);
+            animation: rotateCube 10s infinite linear;
+        }
+
+        .cube-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #2563EB, #EC4899);
+            border: 5px solid #fff;
+            font-size: 24px;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .cube-face.front  { transform: translateZ(100px); }
+        .cube-face.back   { transform: rotateY(180deg) translateZ(100px); }
+        .cube-face.left   { transform: rotateY(-90deg) translateZ(100px); }
+        .cube-face.right  { transform: rotateY(90deg) translateZ(100px); }
+        .cube-face.top    { transform: rotateX(90deg) translateZ(100px); }
+        .cube-face.bottom { transform: rotateX(-90deg) translateZ(100px); }
+
+        @keyframes rotateCube {
+            from { transform: rotateX(-30deg) rotateY(0); }
+            to { transform: rotateX(-30deg) rotateY(360deg); }
+        }
+
+        button {
+            position: absolute;
+            bottom: 50px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        @media screen and (max-width: 768px) {
+            .scene {
+                width: 150px;
+                height: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="scene">
+        <div class="cube">
+            <div class="cube-face front">Front</div>
+            <div class="cube-face back">Back</div>
+            <div class="cube-face left">Left</div>
+            <div class="cube-face right">Right</div>
+            <div class="cube-face top">Top</div>
+            <div class="cube-face bottom">Bottom</div>
+        </div>
+    </div>
+
+    <button onclick="startSpeaking()">Start Speech</button>
+
+    <script>
+        function startSpeaking() {
+            const speech = new SpeechSynthesisUtterance();
+            speech.text = "Hello, welcome to the 3D animation world!";
+            speech.lang = "en-US";
+            speech.pitch = 1;
+            speech.rate = 1;
+            speech.volume = 1;
+            window.speechSynthesis.speak(speech);
+        }
+    </script>
+</body>
+</html>
