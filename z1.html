@@ -45,7 +45,7 @@
 </head>
 <body>
     <div class="container">
-        <img id="faceImage" src="./assests/1.jpeg" alt="Human Face">
+        <img id="faceImage" src="1.jpeg" alt="Human Face">
         <div>
             <button onclick="changeFace('man')">Change to Man's Face</button>
             <button onclick="changeFace('woman')">Change to Woman's Face</button>
@@ -57,9 +57,9 @@
             const faceImage = document.getElementById("faceImage");
 
             if (gender === 'man') {
-                faceImage.src = './assests/m1.jpeg';  // Replace with your image path for a man's face
+                faceImage.src = 'm1.jpeg';  // Replace with your image path for a man's face
             } else if (gender === 'woman') {
-                faceImage.src = './assests/w1.jpeg';  // Replace with your image path for a woman's face
+                faceImage.src = 'w1.jpeg';  // Replace with your image path for a woman's face
             }
         }
     </script>
